@@ -60,5 +60,37 @@ describe("Tabs component", () => {
       expect(tabs.find('.tabs__tabpanel').first().prop("aria-hidden")).toBe(false);
       expect(tabs.find('.tabs__tabpanel').last().prop("aria-hidden")).toBe(true);
     })
+
+    it("should have state activePanelId to the first id", () => {
+      expect(tabs.state("activePanelId")).toBe(dummyTabsContent[0].id);
+    })
+
+    it("should set class active to an active tab", () => {
+      expect(tabs.find('.tabs__tab').first().hasClass("active")).toBe(true);
+    })
+
+    it("should set tabIndex to the first li", () => {
+      expect(tabs.find('.tabs__tab').first().prop('tabIndex')).toBe("1");
+      expect(tabs.find('.tabs__tab').last().prop('tabIndex')).toBe("-1");
+    })
+  })
+
+  describe("mouse events", () => {
+    it("should show selected tabpanel when clicking on associated tab", () => {
+      const lastTab = tabs.find(".tabs__tab").last();
+      lastTab.simulate("click");
+
+      expect(tabs.state("activePanelId")).toBe(dummyTabsContent[2].id);
+    })
+  })
+
+  describe("keyboard events", () => {
+    it("should update the selected tab on Enter press", () => {
+      tabs.setState({activePanelId: dummyTabsContent[2].id})
+      const lastTab = tabs.find(".tabs__tab").last();
+      lastTab.simulate("keyDown", {key: "Enter"});
+
+      expect(tabs.state("activePanelId")).toBe(dummyTabsContent[2].id);
+    })
   })
 })

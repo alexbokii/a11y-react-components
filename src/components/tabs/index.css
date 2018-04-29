@@ -1,0 +1,28 @@
+.tabs__tabpanel[aria-hidden=true] {
+  visibility: hidden;
+}
+
+.tabs__tablist {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #bdeaff;
+  border-left: none;
+  border-top: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tabs__tab {
+  list-style: none;
+  flex: 1 1 auto;
+  padding: 1em;
+  color: #333;
+  text-transform: uppercase;
+  background-color: #f5f5f5;
+  border-left: 1px solid #bdeaff;
+  border-top: 2px solid #bdeaff;
+}
+
+.tabs__tab.active {
+  border-top: 2px solid #ff5722;
+}

@@ -13,13 +13,19 @@ export default class Tabs extends React.Component {
     this.state = {activePanelId: dummyTabsContent[0].id};
   }
 
+  handleTabClick(ev, id) {
+    this.setState({activePanelId: id})
+  }
+
   render() {
     let tabs = dummyTabsContent.map((tab, i) => {
       return <li key={i}
-                  className="tabs__tab"
+                  className={tab.id === this.state.activePanelId ? "tabs__tab active": "tabs__tab"}
+                  tabIndex={tab.id === this.state.activePanelId ? "1": "-1"}
                   role="tab"
                   aria-controls={`tabpanel-${tab.id}`}
-                  id={`tab-${tab.id}`}>
+                  id={`tab-${tab.id}`}
+                  onClick={(e) => this.handleTabClick(e, tab.id)}>
                     {tab.name}
               </li>
     });
