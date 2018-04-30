@@ -73,6 +73,11 @@ describe("Tabs component", () => {
       expect(tabs.find('.tabs__tab').first().prop('tabIndex')).toBe("1");
       expect(tabs.find('.tabs__tab').last().prop('tabIndex')).toBe("-1");
     })
+
+    it("should set tabindex to 1 for an active tabpanel", () => {
+      expect(tabs.find('.tabs__tabpanel').first().prop('tabIndex')).toBe("1");
+      expect(tabs.find('.tabs__tabpanel').last().prop('tabIndex')).toBe("-1");
+    })
   })
 
   describe("mouse events", () => {
@@ -91,6 +96,11 @@ describe("Tabs component", () => {
       lastTab.simulate("keyDown", {key: "Enter"});
 
       expect(tabs.state("activePanelId")).toBe(dummyTabsContent[2].id);
+    })
+
+    it("should update selected tab on left and right arrow key press", () => {
+      tabs.find(".tabs__tab").first().simulate("keyDown", {key: "ArrowRight"});
+      setTimeout(()=>{expect(tabs.state("selectedPanelId")).toBe(dummyTabsContent[1].id)}, 10)
     })
   })
 })
