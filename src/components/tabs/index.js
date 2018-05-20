@@ -11,32 +11,44 @@ export default class Tabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activePanelId: dummyTabsContent[0].id,
-      selectedPanelId: dummyTabsContent[0].id
+      activePanelId: dummyTabsContent[0].id
     };
   }
 
-  handleTabClick(ev, id) {
+  handleClick(ev, id) {
     this.setState({activePanelId: id})
   }
 
   handleKeyDown(ev) {
     const tabLength = dummyTabsContent.length;
-    const selectedTab = dummyTabsContent.find((tab) => tab.id === this.state.selectedPanelId);
+    const selectedTab = dummyTabsContent.find((tab) => tab.id === this.state.activePanelId);
     const selectedTabIndex = dummyTabsContent.indexOf(selectedTab);
 
     let newId;
 
-    if(ev.key === "ArrowRight") {
-      newId = selectedTabIndex != (tabLength - 1) ? dummyTabsContent[selectedTabIndex + 1].id : dummyTabsContent[0].id;
+    switch(ev.key) {
+      case("Home"):
+      newId = dummyTabsContent[0].id;
+      break;
+
+      case("End"):
+        newId = dummyTabsContent[tabLength - 1].id;
+        break;
+
+      case("ArrowLeft"):
+        newId = selectedTabIndex != 0 ? dummyTabsContent[selectedTabIndex - 1].id : dummyTabsContent[tabLength - 1].id;
+        break;
+
+      case("ArrowRight"):
+        newId = selectedTabIndex != (tabLength - 1) ? dummyTabsContent[selectedTabIndex + 1].id : dummyTabsContent[0].id;
+        break;
     }
 
-    else if(ev.key === "ArrowLeft") {
-      newId = selectedTabIndex != 0 ? dummyTabsContent[selectedTabIndex - 1].id : dummyTabsContent[tabLength - 1].id;
-    }
+    this.updateStateIds(newId);
+  }
 
-    this.setState({selectedPanelId: newId}, console.log(this.state.selectedPanelId));
-
+  updateStateIds(id) {
+    this.setState({activePanelId: id});
   }
 
   tabClasses(tabId) {
@@ -44,7 +56,7 @@ export default class Tabs extends React.Component {
       return 'tabs__tab active'
     }
 
-    else if(this.state.selectedPanelId && tabId === this.state.selectedPanelId) {
+    else if(tabId === this.state.selectedPanelId) {
       return 'tabs__tab selected'
     }
 
@@ -62,7 +74,7 @@ export default class Tabs extends React.Component {
                   role="tab"
                   aria-controls={`tabpanel-${tab.id}`}
                   id={`tab-${tab.id}`}
-                  onClick={(e) => this.handleTabClick(e, tab.id)}
+                  onClick={(e) => this.handleClick(e, tab.id)}
                   onKeyDown={(ev) => this.handleKeyDown(ev)}>
                     {tab.name}
               </li>

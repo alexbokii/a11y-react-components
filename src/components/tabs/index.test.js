@@ -88,19 +88,4 @@ describe("Tabs component", () => {
       expect(tabs.state("activePanelId")).toBe(dummyTabsContent[2].id);
     })
   })
-
-  describe("keyboard events", () => {
-    it("should update the selected tab on Enter press", () => {
-      tabs.setState({activePanelId: dummyTabsContent[2].id})
-      const lastTab = tabs.find(".tabs__tab").last();
-      lastTab.simulate("keyDown", {key: "Enter"});
-
-      expect(tabs.state("activePanelId")).toBe(dummyTabsContent[2].id);
-    })
-
-    it("should update selected tab on left and right arrow key press", () => {
-      tabs.find(".tabs__tab").first().simulate("keyDown", {key: "ArrowRight"});
-      setTimeout(()=>{expect(tabs.state("selectedPanelId")).toBe(dummyTabsContent[1].id)}, 10)
-    })
-  })
 })

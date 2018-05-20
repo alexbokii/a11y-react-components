@@ -6,7 +6,7 @@ import Tabs from './components/tabs/index';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Accessible react components</h1>
         <Tabs />
       </div>

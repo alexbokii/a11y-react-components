@@ -1,11 +1,22 @@
+.tabs {
+  width: 30em;
+  border: 1px solid #d3c3c3;
+  padding: 0.5em;
+  border-radius: 0.25em;
+}
+
+.tabs__tabpanel {
+  padding: 0.5em;
+}
+
 .tabs__tabpanel[aria-hidden=true] {
-  visibility: hidden;
+  display: none;
 }
 
 .tabs__tablist {
   display: flex;
   flex-direction: row;
-  border: 1px solid #bdeaff;
+  border: 3px solid #bdeaff;
   border-left: none;
   border-top: none;
   padding: 0;
@@ -20,13 +31,13 @@
   text-transform: uppercase;
   background-color: #f5f5f5;
   border-left: 1px solid #bdeaff;
-  border-top: 2px solid #bdeaff;
+  border-top: 3px solid #bdeaff;
 }
 
 .tabs__tab.active {
-  border-top: 2px solid #ff5722;
+  border-top: 3px solid #ff5722;
 }
 
 .tabs__tab.selected {
-  border-top: 2px solid #4caf50;
+  border-top: 3px solid #4caf50;
 }
