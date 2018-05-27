@@ -1,13 +1,10 @@
 import React from 'react';
+import Tabs from "../components/tabs"
 
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import { withNotes } from '@storybook/addon-notes';
+import { checkA11y } from '@storybook/addon-a11y';
 
-import { Button, Welcome } from '@storybook/react/demo';
-
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
-
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>);
+storiesOf('Tabs', module)
+  .addDecorator(checkA11y)
+  .add('tabs', () =><Tabs style={{ backgroundColor: 'red', color: 'darkRed', }} />)

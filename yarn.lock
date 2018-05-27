@@ -2,6 +2,17 @@
 # yarn lockfile v1
 
 
+"@storybook/addon-a11y@^3.4.6":
+  version "3.4.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-3.4.6.tgz#9616bf9e2c61dc58ff8713b44acec8520ce52982"
+  dependencies:
+    "@storybook/components" "3.4.6"
+    axe-core "^2.6.1"
+    babel-runtime "^6.26.0"
+    glamor "^2.20.40"
+    glamorous "^4.12.1"
+    prop-types "^15.6.1"
+
 "@storybook/addon-actions@3.4.6", "@storybook/addon-actions@^3.4.6":
   version "3.4.6"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.4.6.tgz#70ca84a4754ea2969640428890d9a3c9369261f6"
@@ -26,7 +37,16 @@
     global "^4.3.2"
     prop-types "^15.6.1"
 
-"@storybook/addons@3.4.6":
+"@storybook/addon-notes@^3.4.6":
+  version "3.4.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-notes/-/addon-notes-3.4.6.tgz#921e54abf550d97923bebc7c93c1ea4c3ec82984"
+  dependencies:
+    babel-runtime "^6.26.0"
+    marked "^0.3.17"
+    prop-types "^15.6.1"
+    util-deprecate "^1.0.2"
+
+"@storybook/addons@3.4.6", "@storybook/addons@^3.4.6":
   version "3.4.6"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.4.6.tgz#8275e46b8dfe7c751f2f18a431bc3339c999a2ae"
 
@@ -603,6 +623,10 @@ aws-sign2@~0.7.0:
 aws4@^1.6.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.7.0.tgz#d4d0e9b9dbfca77bf08eeb0a8a471550fe39e289"
+
+axe-core@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-2.6.1.tgz#28772c4f76966d373acda35b9a409299dc00d1b5"
 
 axobject-query@^0.1.0:
   version "0.1.0"
@@ -5349,7 +5373,7 @@ markdown-loader@^2.0.2:
     loader-utils "^1.1.0"
     marked "^0.3.9"
 
-marked@^0.3.9:
+marked@^0.3.17, marked@^0.3.9:
   version "0.3.19"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
 
